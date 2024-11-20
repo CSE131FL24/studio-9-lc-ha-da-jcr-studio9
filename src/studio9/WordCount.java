@@ -29,10 +29,21 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
-
-		// FIXME
-		throw new NotYetImplementedException();
-
+		Map<String, Integer> wordsCounted = new HashMap<>();
+		/*
+		 * for each new word that gets inputted, we check it with the previous words
+		 * if its a new word, create it with key 1
+		 * else, add one to the key of the word that's already there
+		 */
+		for (int i = 0; i < words.size(); i++) {
+			String currentWord = words.get(i);
+			if (wordsCounted.get(currentWord) != null) {
+				wordsCounted.put(currentWord, wordsCounted.get(currentWord) + 1);
+			} else {
+				wordsCounted.put(currentWord, 1);
+			}
+		}
+		return wordsCounted;
 	}
 	
 	public static void main(String[] args) {
